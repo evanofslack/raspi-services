@@ -1,0 +1,11 @@
+version: "3.3"
+
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheous
+    restart: unless-stopped
+    ports:
+      - "9090:9090"
+    volumes:
+      - $HOME/docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
