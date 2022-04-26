@@ -46,6 +46,10 @@ services:
       - GF_PATHS_LOGS=/var/log/grafana
       - GF_PATHS_PLUGINS=/var/lib/grafana/plugins
       - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
+    logging:
+      driver: loki
+      options:
+        loki-url: "http://localhost:3100/loki/api/v1/push"
 
   node-exporter:
     container_name: node-exporter
@@ -73,6 +77,19 @@ services:
     links:
       - cadvisor:cadvisor
       - node-exporter:node-exporter
+
+  loki:
+      container_name: loki
+      image: grafana/loki:latest
+      networks:
+        - rpimonitor_default
+      restart: unless-stopped
+      ports:
+        - "127.0.0.1:3100:3100"
+      volumes:
+        - $HOME/docker/loki/config/loki-config.yml:/etc/loki/loki-config.yml
+        - $HOME/docker/loki/data:/data/loki
+      command: -config.file=/etc/loki/loki-config.yml
 
 
 volumes:

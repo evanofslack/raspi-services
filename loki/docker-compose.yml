@@ -1,0 +1,12 @@
+version: '3'
+services: 
+  loki:
+      container_name: loki
+      image: grafana/loki:2.3.0
+      restart: unless-stopped
+      ports:
+        - "127.0.0.1:3100:3100"
+      volumes:
+        - $HOME/docker/loki/config/loki-config.yml:/etc/loki/loki-config.yml
+        - $HOME/docker/loki/data:/data/loki
+      command: -config.file=/etc/loki/loki-config.yml
