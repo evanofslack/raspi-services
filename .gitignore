@@ -1,3 +1,5 @@
 .env
+
 prometheus/data/*
 home-assistant/config*
+loki/data/*
