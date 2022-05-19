@@ -5,7 +5,8 @@ Containers running on my pi
 ## Services
 - [cAvisor](https://github.com/google/cadvisor) for container monitoring 
 - [Node exporter](https://github.com/prometheus/node_exporter) for hardware and OS metrics
-- [Prometheus](https://github.com/prometheus/prometheus) as a persistant time series database
+- [Prometheus](https://github.com/prometheus/prometheus) as a time series database
+- [InfluxDB](https://github.com/influxdata/influxdb) as an alternative time series database
 - [Grafana](https://github.com/grafana/grafana) for visualization
 - [Loki](https://github.com/grafana/loki) for log aggregation 
 - [Home Assistant](https://github.com/home-assistant/core) for automation and control
