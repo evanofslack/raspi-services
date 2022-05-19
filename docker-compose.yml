@@ -21,6 +21,16 @@ services:
     devices:
       - /dev/kmsg
     restart: unless-stopped
+
+  node-exporter:
+    container_name: node-exporter
+    expose:
+      - 9100
+    hostname: rpi-exporter
+    image: prom/node-exporter:latest
+    networks:
+      - rpimonitor_default
+    restart: unless-stopped
   
   grafana:
     image: grafana/grafana:8.4.7
@@ -45,17 +55,6 @@ services:
       - GF_PATHS_LOGS=/var/log/grafana
       - GF_PATHS_PLUGINS=/var/lib/grafana/plugins
       - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
-
-  node-exporter:
-    container_name: node-exporter
-    expose:
-      - 9100
-    hostname: rpi-exporter
-    image: prom/node-exporter:latest
-    networks:
-      - rpimonitor_default
-    restart: unless-stopped
-
 
   prometheus:
     hostname: rpi-prom
@@ -87,6 +86,14 @@ services:
         - $HOME/docker/loki/data:/data/loki
       command: -config.file=/etc/loki/loki-config.yml
 
+  influxdb:
+    image: hypriot/rpi-influxdb:latest
+    container_name: influxdb
+    ports:
+      - "8086:8086"
+    restart: unless-stopped
+    volumes:
+      - $HOME/docker/influxdb/data:/data
 
 volumes:
   grafana-db:
