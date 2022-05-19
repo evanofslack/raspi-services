@@ -1,0 +1,9 @@
+services:
+  influxdb:
+    image: hypriot/rpi-influxdb:latest
+    container_name: influxdb
+    ports:
+      - "8086:8086"
+    restart: unless-stopped
+    volumes:
+      - $HOME/docker/influxdb/data:/data

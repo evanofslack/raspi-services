@@ -3,3 +3,4 @@
 prometheus/data/*
 home-assistant/config*
 loki/data/*
+influxdb/data/*
