@@ -1,20 +1,9 @@
 services:
-  openspeedtest:
-    image: openspeedtest/latest
-    container_name: speedtest
-    restart: unless-stopped
-    networks:
-      - rpimonitor_default
-    ports:
-      - "5000:3000"
-
   cloudflared:
     image: erisamoe/cloudflared
     container_name: cloudflared
     restart: unless-stopped
     command: tunnel run --token ${CLOUDFLARED_TOKEN}
-    depends_on:
-      - openspeedtest
     networks:
       - rpimonitor_default
 

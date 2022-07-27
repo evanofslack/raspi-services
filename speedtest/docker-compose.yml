@@ -1,0 +1,13 @@
+services:
+  openspeedtest:
+    image: openspeedtest/latest
+    container_name: speedtest
+    restart: unless-stopped
+    networks:
+      - rpimonitor_default
+    ports:
+      - "5000:3000"
+
+networks:
+  rpimonitor_default:
+    external: true
