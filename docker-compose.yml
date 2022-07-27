@@ -86,14 +86,13 @@ services:
       - $HOME/docker/loki/data:/data/loki
     command: -config.file=/etc/loki/loki-config.yml
 
-  influxdb:
-    image: hypriot/rpi-influxdb:latest
-    container_name: influxdb
-    ports:
-      - "8086:8086"
+  cloudflared:
+    image: erisamoe/cloudflared
+    container_name: cloudflared
     restart: unless-stopped
-    volumes:
-      - $HOME/docker/influxdb/data:/data
+    command: tunnel run --token ${CLOUDFLARED_TOKEN}
+    networks:
+      - rpimonitor_default
 
 volumes:
   grafana-db:
