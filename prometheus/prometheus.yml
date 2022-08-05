@@ -10,3 +10,12 @@ scrape_configs:
     scrape_interval: 30s
     static_configs:
       - targets: ['10.33.1.101:4445']
+
+  - job_name: 'pve'
+    static_configs:
+      - targets:
+        - 10.33.1.20:9221 
+    metrics_path: '/pve'
+    params:
+      module: [default]
+      target: ["10.33.1.174"]
