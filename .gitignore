@@ -1,5 +1,5 @@
 .env
-.pem
+*.pem
 
 prometheus/data/*
 home-assistant/config*
