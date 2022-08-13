@@ -5,3 +5,6 @@ prometheus/data/*
 home-assistant/config*
 loki/data/*
 influxdb/data/*
+
+adguard/conf
+adguard/work

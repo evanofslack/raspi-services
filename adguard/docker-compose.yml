@@ -8,8 +8,8 @@ services:
       - PUID=1000
       - PGID=1000
     volumes:
-      - $HOME/docker/adguard/conf:/conf
-      - $HOME/docker/adguard/work:/work
+      - $HOME/docker/adguard/conf:/opt/adguardhome/conf
+      - $HOME/docker/adguard/work:/opt/adguardhome/work
     ports:
       # DNS
       - 53:53/tcp
